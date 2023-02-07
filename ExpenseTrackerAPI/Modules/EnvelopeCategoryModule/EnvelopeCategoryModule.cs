@@ -22,8 +22,7 @@ namespace ExpenseTrackerAPI.Modules.EnvelopeCategoryModule
 
                 return envelopeCategories;
             })
-          .WithName("EnvelopeCategory")
-          .WithOpenApi();
+          .WithName("EnvelopeCategory");
             return app;
 
         }
