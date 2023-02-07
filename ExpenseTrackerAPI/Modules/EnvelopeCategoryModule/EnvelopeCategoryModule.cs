@@ -8,9 +8,17 @@ namespace ExpenseTrackerAPI.Modules.EnvelopeCategoryModule
 {
     public class EnvelopeCategoryModule : IModule
     {
+
+        private readonly string _routePrefix;
+
+        public EnvelopeCategoryModule()
+        {
+            _routePrefix = "EnvelopeCateogry";
+        }
+
         public IEndpointRouteBuilder MapEndpointDefinitions(IEndpointRouteBuilder app)
         {
-            app.MapGet("/GetAll", (HttpContext httpContext) =>
+            app.MapGet($"{_routePrefix}/", (HttpContext httpContext) =>
             {
                 List<EnvelopeCategory> envelopeCategories = new List<EnvelopeCategory>();
                 envelopeCategories.Add(new EnvelopeCategory { Id = 1, Name = "Food", IsActive = true });
@@ -21,8 +29,8 @@ namespace ExpenseTrackerAPI.Modules.EnvelopeCategoryModule
                 envelopeCategories.Add(new EnvelopeCategory { Id = 6, Name = "Savings", IsActive = true });
 
                 return envelopeCategories;
-            })
-          .WithName("EnvelopeCategory");
+            });
+          
             return app;
 
         }
